@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<body>
+    <ul>
+        <li><a href="#">Test</a></li>
+    </ul>
+    
+    <p><kbd>Tab</kbd> for search first variant</p>
+    <p><kbd>Enter</kbd> for search your question</p>
+
+    <input type="text" placeholder="Search here">
+</body>
