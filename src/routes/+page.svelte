@@ -13,8 +13,13 @@
 				break;
             
             default:
-                input.focus()
-                break;
+                if ((e.keyCode >=48 && e.keyCode<=90) || (e.keyCode >= 96 && e.keyCode <= 111) || (e.keyCode>= 186 && e.keyCode <= 222)) {
+                    input.focus()
+                    break;
+                }
+                else {
+                    break
+                }
 
 		}
 	}
