@@ -40,6 +40,7 @@
 	</div>
 
 	<input type="text" placeholder="Search here" bind:value={search} bind:this={input} />
+	<a href="https://tasklisttry.pages.dev">Мне повезёт!</a>
 </div>
 
 <svelte:window on:keydown={onKeyDown} />
