@@ -1,10 +1,32 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	let search = '';
 	let input: HTMLInputElement;
+	let searchList: string[] = JSON.parse(localStorage.getItem('searches') || 'null');
+	$: results = searchList.filter((item) => item.includes(search));
+	
+	$: {
+		localStorage.setItem('searches', JSON.stringify(searchList))
+	}
+
+	function isElementInList(element: string, list: string[]) {
+		if (list.includes(element)) {
+			return true;
+		}
+		return false;
+	}
+
 	function onKeyDown(e: any) {
 		switch (e.key) {
 			case 'Tab':
 				console.log('Tab');
+				e.preventDefault();
+				break;
+			case '+':
+				if (isElementInList(search, searchList) === false) {
+					searchList = [...searchList, search];
+					search = '';
+				}
 				e.preventDefault();
 				break;
 			case 'Alt':
@@ -31,12 +53,16 @@
 
 <div class="main">
 	<ul>
-		<li><a href="#">Test</a></li>
+		<!-- <li><a href="#">Test</a></li> -->
+		{#each results as result}
+			<li><p>{result}</p></li>
+		{/each}
 	</ul>
 
 	<div class="hint">
 		<p><kbd>Tab</kbd> for search first variant</p>
 		<p><kbd>Enter</kbd> for search your question</p>
+		<p><kbd>+</kbd> for add your question to list</p>
 	</div>
 
 	<input type="text" placeholder="Search here" bind:value={search} bind:this={input} />
