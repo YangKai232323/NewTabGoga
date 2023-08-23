@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	let search = '';
 	let input: HTMLInputElement;
-	let searchList: string[] = JSON.parse(localStorage.getItem('searches') || 'null');
+	let searchList: string[] = JSON.parse(localStorage.getItem('searches') || 'null') || [];
 	$: results = searchList.filter((item) => item.includes(search));
 	
 	$: {
